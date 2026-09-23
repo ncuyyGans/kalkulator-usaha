@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kalkulator HPP, harga jual, profit, ROI, BEP, resep, dan kasir untuk usaha kecil." />
+  <meta name="theme-color" content="#101c3d" />
+  <title>UsahaKu — Kalkulator Bisnis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="UsahaKu"><span class="brand-mark">U</span><span>Usaha<span>Ku</span></span></a>
+      <nav id="nav" aria-label="Navigasi utama">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span>Ringkasan</button>
+        <button class="nav-item" data-page="hpp"><span>◫</span>Kalkulator HPP</button>
+        <button class="nav-item" data-page="modal"><span>↗</span>Balik Modal</button>
+        <button class="nav-item" data-page="bahan"><span>◇</span>Bahan Baku</button>
+        <button class="nav-item" data-page="produk"><span>▦</span>Produk & Resep</button>
+        <button class="nav-item" data-page="kasir"><span>▤</span>Kasir</button>
+      </nav>
+      <div class="side-card"><b>Data aman di perangkat</b><p>Semua data tersimpan lokal di browser Anda.</p></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+        <div><p class="eyebrow" id="today">KALKULATOR BISNIS</p><h1 id="pageTitle">Ringkasan Usaha</h1></div>
+        <button class="btn btn-light" onclick="window.print()">⇩ Unduh Laporan</button>
+      </header>
+
+      <section class="page active" id="dashboard">
+        <div class="hero">
+          <div><span class="pill">● SEMUA TERKENDALI</span><h2>Angka bisnis jadi lebih<br><em>mudah dipahami.</em></h2><p>Hitung biaya, tentukan harga, dan pantau performa usaha dalam satu tempat.</p><button class="btn btn-primary go" data-go="hpp">Mulai menghitung →</button></div>
+          <div class="hero-visual"><div class="float-card fc1"><small>Profit bulan ini</small><strong id="heroProfit">Rp0</strong><span>↑ berdasarkan penjualan</span></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="float-card fc2"><b>Usaha sehat</b><small>Margin target terpantau</small></div></div>
+        </div>
+        <div class="stats">
+          <article><div class="stat-icon green">↗</div><small>Omzet tercatat</small><strong id="statRevenue">Rp0</strong><span class="trend">Total transaksi kasir</span></article>
+          <article><div class="stat-icon purple">◎</div><small>Estimasi profit</small><strong id="statProfit">Rp0</strong><span class="trend">Setelah dikurangi HPP</span></article>
+          <article><div class="stat-icon orange">▦</div><small>Produk tersimpan</small><strong id="statProducts">0</strong><span>Resep aktif</span></article>
+          <article><div class="stat-icon blue">◇</div><small>Bahan baku</small><strong id="statIngredients">0</strong><span>Item tersimpan</span></article>
+        </div>
+        <div class="grid-2">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">PERFORMA</p><h3>Penjualan terbaru</h3></div><button class="text-btn go" data-go="kasir">Lihat kasir →</button></div><div id="recentSales" class="empty">Belum ada transaksi. Mulai dari menu Kasir.</div></article>
+          <article class="panel quick"><p class="eyebrow">AKSES CEPAT</p><h3>Mau hitung apa hari ini?</h3><button class="quick-row go" data-go="hpp"><span class="stat-icon purple">◫</span><span><b>Hitung HPP Produk</b><small>Biaya produksi & harga ideal</small></span><i>→</i></button><button class="quick-row go" data-go="modal"><span class="stat-icon orange">↗</span><span><b>Analisis Balik Modal</b><small>ROI, BEP, dan kelayakan usaha</small></span><i>→</i></button></article>
+        </div>
+      </section>
+
+      <section class="page" id="hpp">
+        <div class="section-intro"><div><p class="eyebrow">KALKULATOR PRODUK</p><h2>Hitung HPP tanpa ragu.</h2><p>Masukkan semua komponen biaya untuk mendapatkan harga pokok dan rekomendasi harga jual.</p></div></div>
+        <div class="calc-layout">
+          <form class="panel form-card" id="hppForm">
+            <h3>Detail produksi</h3><label>Nama produk<input id="hppName" placeholder="Contoh: Es kopi susu" required></label>
+            <div class="form-grid"><label>Total biaya bahan (Rp)<input id="materialCost" type="number" min="0" value="150000"></label><label>Biaya kemasan (Rp)<input id="packagingCost" type="number" min="0" value="25000"></label><label>Tenaga kerja (Rp)<input id="laborCost" type="number" min="0" value="50000"></label><label>Biaya lain-lain (Rp)<input id="otherCost" type="number" min="0" value="10000"></label><label>Jumlah produksi<input id="productionQty" type="number" min="1" value="50"></label><label>Target margin (%)<input id="marginTarget" type="number" min="0" max="95" value="40"></label></div>
+            <button class="btn btn-primary" type="submit">Hitung sekarang →</button>
+          </form>
+          <aside class="result-card" id="hppResult"><p class="eyebrow">HASIL PERHITUNGAN</p><div class="result-main"><small>HPP per produk</small><strong id="hppUnit">Rp4.700</strong></div><div class="result-row"><span>Total biaya produksi</span><b id="hppTotal">Rp235.000</b></div><div class="result-row"><span>Harga jual ideal</span><b id="idealPrice">Rp7.834</b></div><div class="result-row"><span>Profit per produk</span><b id="unitProfit">Rp3.134</b></div><div class="result-row"><span>Margin</span><b id="resultMargin">40%</b></div><div class="tip">💡 Harga jual dihitung dari target margin terhadap harga jual, bukan markup biaya.</div><button class="btn btn-white" id="saveProduct" type="button">Simpan sebagai produk</button></aside>
+        </div>
+      </section>
+
+      <section class="page" id="modal">
+        <div class="section-intro"><div><p class="eyebrow">ANALISIS KELAYAKAN</p><h2>Kapan usahamu balik modal?</h2><p>Uji skenario bisnis bulanan dan lihat estimasi BEP secara otomatis.</p></div></div>
+        <div class="calc-layout">
+          <form class="panel form-card" id="roiForm"><h3>Asumsi usaha</h3><div class="form-grid"><label>Modal awal (Rp)<input id="initialCapital" type="number" min="0" value="25000000"></label><label>Omzet per bulan (Rp)<input id="monthlyRevenue" type="number" min="0" value="12000000"></label><label>Biaya variabel / bulan (Rp)<input id="variableCost" type="number" min="0" value="4500000"></label><label>Biaya operasional / bulan (Rp)<input id="operationalCost" type="number" min="0" value="3000000"></label></div><button class="btn btn-primary" type="submit">Analisis kelayakan →</button></form>
+          <aside class="result-card navy"><p class="eyebrow">PROYEKSI BISNIS</p><div class="result-main"><small>Estimasi balik modal</small><strong id="bepMonths">5,6 bulan</strong></div><div class="result-row"><span>Profit bersih / bulan</span><b id="monthlyProfit">Rp4.500.000</b></div><div class="result-row"><span>ROI tahunan</span><b id="annualRoi">216%</b></div><div class="result-row"><span>Margin bersih</span><b id="netMargin">37,5%</b></div><div id="feasibility" class="health good">● Skenario usaha layak</div></aside>
+        </div>
+      </section>
+
+      <section class="page" id="bahan">
+        <div class="section-intro"><div><p class="eyebrow">DATABASE</p><h2>Bahan baku</h2><p>Simpan harga dan satuan bahan untuk referensi perhitungan.</p></div><button class="btn btn-primary" id="addIngredient">+ Tambah bahan</button></div>
+        <div class="panel table-wrap"><table><thead><tr><th>Nama bahan</th><th>Harga beli</th><th>Jumlah</th><th>Harga / satuan</th><th></th></tr></thead><tbody id="ingredientTable"></tbody></table><div class="empty" id="ingredientEmpty">Belum ada bahan baku tersimpan.</div></div>
+      </section>
+
+      <section class="page" id="produk">
+        <div class="section-intro"><div><p class="eyebrow">DATABASE</p><h2>Produk & resep</h2><p>Daftar produk dari hasil kalkulator HPP.</p></div><button class="btn btn-primary go" data-go="hpp">+ Hitung produk</button></div><div id="productGrid" class="product-grid"></div><div class="panel empty" id="productEmpty">Belum ada produk. Hitung HPP lalu simpan hasilnya.</div>
+      </section>
+
+      <section class="page" id="kasir">
+        <div class="section-intro"><div><p class="eyebrow">POINT OF SALE</p><h2>Kasir sederhana</h2><p>Catat penjualan dan pantau omzet serta profit.</p></div></div>
+        <div class="cashier-layout"><div class="panel"><h3>Pilih produk</h3><div id="cashierProducts" class="cashier-products"></div></div><aside class="panel cart"><h3>Pesanan</h3><div id="cartItems" class="cart-items empty">Keranjang masih kosong.</div><div class="cart-total"><span>Total</span><strong id="cartTotal">Rp0</strong></div><button class="btn btn-primary full" id="checkout">Selesaikan transaksi</button></aside></div>
+        <div class="panel table-wrap sales-panel"><div class="panel-head"><h3>Riwayat transaksi</h3><button class="text-btn" id="clearSales">Hapus riwayat</button></div><table><thead><tr><th>Waktu</th><th>Item</th><th>Total</th><th>Profit</th></tr></thead><tbody id="salesTable"></tbody></table><div class="empty" id="salesEmpty">Belum ada transaksi.</div></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="ingredientDialog"><form method="dialog" id="ingredientForm"><div class="modal-head"><div><p class="eyebrow">BAHAN BARU</p><h3>Tambah bahan baku</h3></div><button value="cancel" class="icon-btn">×</button></div><label>Nama bahan<input id="ingredientName" required placeholder="Contoh: Gula aren"></label><div class="form-grid"><label>Harga beli (Rp)<input id="ingredientPrice" required type="number" min="0"></label><label>Jumlah / ukuran<input id="ingredientAmount" required type="number" min="0.01" step="0.01"></label></div><label>Satuan<select id="ingredientUnit"><option>gram</option><option>ml</option><option>pcs</option><option>kg</option><option>liter</option></select></label><button class="btn btn-primary full" value="default">Simpan bahan</button></form></dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
